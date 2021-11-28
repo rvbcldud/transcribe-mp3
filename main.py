@@ -3,9 +3,11 @@
 from vosk import Model, KaldiRecognizer, SetLogLevel
 import sys
 import os
+import pwd
 import subprocess
 import json
 import datetime
+import psutil
 
 SetLogLevel(0)
 
@@ -13,6 +15,7 @@ current_path = os.getcwd()
 date = datetime.datetime.now().strftime("%Y%m%d")
 output_path = "/output/" + date + "/"
 rec_path = "/media/rvbcldud/IC RECORDER/REC_FILE/FOLDER01/"
+username = pwd.getpwuid(os.getuid())[0]
 
 final = ''
 
@@ -28,12 +31,28 @@ sample_rate=16000
 # TODO create different paths for output ... whether there needs to be a "/" at
 # the start of the path string
 # TODO put user specific variable (e.g., directories, model)
+# TODO print a prompt to show different usb devices
 
 # Function that opens an mp3 file through the console command "ffmpeg"
 
 model = Model("model")
 
 rec = KaldiRecognizer(model, sample_rate)
+
+disk_list = os.listdir('/media/' + username)
+
+print("Choose one of the following:")
+print(pwd.getpwuid(os.getuid())[0])
+
+j = 0
+
+for i in disk_list:
+    j = j + 1
+    print(str(j) + '...' + i)
+
+drive = print(input())
+
+
 
 def open_mp3(sound_file):
     process = subprocess.Popen(['ffmpeg', '-loglevel', 'quiet', '-i',
