@@ -32,6 +32,7 @@ sample_rate=16000
 # the start of the path string
 # TODO put user specific variable (e.g., directories, model)
 # TODO print a prompt to show different usb devices
+# TODO document code better
 
 # Function that opens an mp3 file through the console command "ffmpeg"
 
