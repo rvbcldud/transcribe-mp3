@@ -1,11 +1,8 @@
 import datetime
 import json
 import os
-import pwd
 import subprocess
-import sys
 
-import psutil
 from vosk import KaldiRecognizer, Model, SetLogLevel
 
 # Store the date in YEAR|MONTH|DAY format into date variable
@@ -79,7 +76,6 @@ def read_mp3(sound_file):
     with open((output_path + head + ".txt"), "w") as f:
         # Write all of the transcription...minus whitespace at beggining
         f.write(final.strip())
-
 
 # Iterates through each recording in given path and outputs .txt files
 for i in os.listdir(rec_path):

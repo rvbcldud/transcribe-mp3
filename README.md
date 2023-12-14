@@ -2,17 +2,12 @@
 A script that takes all of the mp3 files in a directory, transcribes them into .txt files, and places them in an output directory. This is especially useful for voice memos.
 
 
-## Instructions
+## Install
 
-### Dependencies 
-
-You need these python libraries (along with python 3):
-- sys
-- os
-- subprocess
-- json
-- datetime
-- vosk
+In order to install this package, type the following into the command line when at the project's directory:
+```console
+$ python3 setup.py install --user
+```
 
 You also need ffmpeg: ```sudo apt install ffmpeg```
 
@@ -28,9 +23,9 @@ After downloading your model of choice, unzip it and rename it "model". It needs
 to be renamed model in order for the script to be able to find the model you
 downloaded.
 
-### Using the program
+## Usage
 
-#### Choosing a key word
+### Choosing a key word
 
 The program has been written so that when you say a certain word (that you
 define) it takes everything before said word and makes it the title of the .txt
@@ -39,10 +34,10 @@ shouldn't be something too difficult to say and, consequently, for the program t
 interpret. Therefore pick a simple, uncommon word to signal the end of the
 title.
 
-#### Setting user-specific variables
+### Setting user-specific variables
 
-After downloading a model and renaming it, you need to create a file named
-"info.json" with this format:
+After downloading a model and renaming it, you need to edit a file named
+"info.json":
 ```json
 {
     "rec_path":"/PATH/TO/RECORDINGS/",
@@ -50,8 +45,11 @@ After downloading a model and renaming it, you need to create a file named
 }
 ```
 
-#### Running the program
+### Running the program
 
 After doing this and setting the variables appropriately, you can now run
-the program: ```python3 main.py```
+the program: 
+```console
+$ transcribe-mp3
+```
 
